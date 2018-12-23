@@ -23,7 +23,7 @@ app.get('/', function(req, res) {
   return res.send('Hello! The API is at http://localhost:' + port + '/api');
 });
  
-var routes = require('./routes');
+var routes = require('./authRouter');
 app.use('/api', routes);
  
 mongoose.connect(config.db, { useNewUrlParser: true , useCreateIndex: true});
