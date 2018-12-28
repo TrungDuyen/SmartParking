@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      List Slots
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngFor="let slot of classSlots.rooms" class="category-block">
+ 
+    <ion-row no-padding class="category-banner">
+      <ion-col text-left button tappable align-self-center>
+        {{ slot.name }}
+      </ion-col>
+    </ion-row>
+ 
+    <ion-slides [options]="sliderConfig">
+      <ion-slide *ngFor="let slot of classSlots.rooms">
+       
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>
+                {{ slot.name }} - {{ slot.value }}
+              </ion-card-title>
+              <ion-card-content>
+                <img src="{{ slot.photo }}">
+                <ion-button expand="full" (click)="submit()">Book</ion-button>
+              </ion-card-content>
+            </ion-card-header>
+          </ion-card>
+        
+      </ion-slide>
+    </ion-slides>
+ 
+  </div>
+</ion-content>

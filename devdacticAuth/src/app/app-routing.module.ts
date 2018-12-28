@@ -10,6 +10,8 @@ const routes: Routes = [
     loadChildren: './pages/inside/inside.module#InsidePageModule',
     canActivate: [AuthGuardService]
   },
+  { path: 'book', loadChildren: './pages/book/book.module#BookPageModule' },
+  { path: 'submit', loadChildren: './pages/submit/submit.module#SubmitPageModule' },
 ];
  
 @NgModule({

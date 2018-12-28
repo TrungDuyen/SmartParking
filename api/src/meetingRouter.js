@@ -4,7 +4,7 @@ const mongoose = require('mongoose'),
       ObjectId = mongoose.Types.ObjectId;
 
 const user     = require('./models/userModel');
-const Slot     = require('./models/slotModel');
+const Room     = require('./models/roomModel');
 const Meeting  = require('./models/meetingModel');
 
 const isAuthed = require('./middleware/isUserAuthed');
@@ -13,11 +13,11 @@ const meetingRouter = express.Router();
 
 meetingRouter.get('/', isAuthed, (req, res) => {
 
-    const isSlotMode = req.query.slotId !== 'undefined';
+    const isRoomMode = req.query.roomId !== 'undefined';
     let query;
-    if(isSlotMode){
+    if(isRoomMode){
       query = {
-        slot: ObjectId(req.query.slotId),
+        room: ObjectId(req.query.roomId),
         startTime: { $gte: new Date() }
        };
     } else {
@@ -28,8 +28,8 @@ meetingRouter.get('/', isAuthed, (req, res) => {
     }
 
     Meeting.find(query)
-    .populate('slot')
-    .populate('hostId attendees', 'email')
+    .populate('room')
+    .populate('hostId attendees', 'username')
     .sort('startTime')
     .lean()
     .exec((err, meetings) => {
@@ -48,13 +48,13 @@ meetingRouter.get('/', isAuthed, (req, res) => {
     });
 });
 
-meetingRouter.get('/slotinfo', isAuthed, (req, res) => {
+meetingRouter.get('/roominfo', isAuthed, (req, res) => {
 
-  let query = { _id: ObjectId(req.query.slotId) };
+  let query = { _id: ObjectId(req.query.roomId) };
 
-  Slot.find(query).exec((err, slot) => {
+  Room.find(query).exec((err, room) => {
     if(err) res.status(500).send(err);
-    else res.json(slot);
+    else res.json(room);
   });
 });
 
@@ -68,7 +68,7 @@ meetingRouter.post('/', isAuthed, (req, res) => {
       return;
     }
     let meeting = new Meeting();
-        meeting.slot = req.body.slot;
+        meeting.room = req.body.room;
         meeting.title = req.body.title;
         meeting.hostId = req.user._id;
         meeting.startTime =  new Date(req.body.startT);

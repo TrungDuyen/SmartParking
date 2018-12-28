@@ -8,6 +8,7 @@ var cors        = require('cors');
  
 var app = express();
 app.use(cors());
+
  
 // get our request parameters
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -25,6 +26,8 @@ app.get('/', function(req, res) {
  
 var routes = require('./authRouter');
 app.use('/api', routes);
+var routerRoom = require('./book');
+app.use('/api', routerRoom);
  
 mongoose.connect(config.db, { useNewUrlParser: true , useCreateIndex: true});
  

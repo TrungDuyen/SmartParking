@@ -2,6 +2,9 @@ import { AuthService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { ToastController } from '@ionic/angular';
+import { Platform, AlertController } from '@ionic/angular';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router'
  
 @Component({
   selector: 'app-inside',
@@ -9,12 +12,20 @@ import { ToastController } from '@ionic/angular';
   styleUrls: ['./inside.page.scss'],
 })
 export class InsidePage implements OnInit {
+  data = ''; 
+  
+
+  sliderConfig = {
+    slidesPerView: 1.6,
+    spaceBetween: 10,
+    centeredSlides: true
+  };
  
-  data = '';
- 
-  constructor(private authService: AuthService, private storage: Storage, private toastController: ToastController) { }
+  constructor(private authService: AuthService, private storage: Storage, private toastController: ToastController, private router : Router) { }
  
   ngOnInit() {
+
+     
   }
  
   loadSpecialInfo() {
@@ -37,5 +48,8 @@ export class InsidePage implements OnInit {
     });
     toast.then(toast => toast.present());
   }
- 
+  showlist(){
+    this.router.navigate(['book']);
+  }
+  
 }
