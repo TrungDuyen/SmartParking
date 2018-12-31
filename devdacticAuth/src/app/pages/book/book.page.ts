@@ -15,13 +15,14 @@ import { RestApiService } from '../../services/rest-api.service';
 export class BookPage implements OnInit {
  
   classSlots: any;
+  rooms;
   sliderConfig = {
     slidesPerView: 1.6,
     spaceBetween: 10,
     centeredSlides: true
   };
  
-  constructor(public api: RestApiService, public loadingController: LoadingController, private router : Router) {
+  constructor(public api: RestApiService, public loadingController: LoadingController, private router : Router, public navCtrl: NavController) {
 
    
   }
@@ -44,7 +45,7 @@ export class BookPage implements OnInit {
   }
 
   submit(){
-     this.router.navigate(['submit']);
-  }
+    this.router.navigate(['submit']);
+    }
 }
 

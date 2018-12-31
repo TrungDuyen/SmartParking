@@ -37,7 +37,7 @@ export class RestApiService {
 	    map(this.extractData),
 	    catchError(this.handleError));
 	}
-	submitSlot(){
+	submitClassSlot(){
 		
 	}
 }

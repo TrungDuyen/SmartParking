@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { LoadingController } from '@ionic/angular';
+import { RestApiService } from '../../services/rest-api.service';
+import { ActivatedRoute, Router  } from '@angular/router';
+import { FormControl, FormGroupDirective, FormBuilder, FormGroup, NgForm, Validators, FormArray } from '@angular/forms';
+import { NavController, NavParams } from '@ionic/angular';
 
 @Component({
   selector: 'app-submit',
@@ -7,9 +12,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SubmitPage implements OnInit {
 
-  constructor() { }
+ 	startT;
+ 	endT;
+ 	slotForm: FormGroup;
+
+
+ 	constructor( public api: RestApiService){
+		this.startT = new Date().toISOString();
+		this.endT  = new Date().toISOString();
+  	}
 
   ngOnInit() {
+
+  }
+
+  SubmitSlot(){
+
   }
 
 }

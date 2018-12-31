@@ -7,7 +7,7 @@ const room     = require('./models/roomModel');
 
 routers.get('/rooms', function(req, res, next){
 	room.find({}).then(function(rooms){
-		res.send({rooms});
+		res.send(rooms);
 	})
 });
 

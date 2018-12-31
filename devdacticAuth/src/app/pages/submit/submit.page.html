@@ -1,9 +1,34 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>submit</ion-title>
+    <ion-title>Book Slot</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
+	<form >
+		<ion-item>
+	      <ion-label position="floating">Car Number</ion-label>
+	      <ion-input type="text" ></ion-input>
+    	</ion-item>
+    	<ion-item>
+		  <ion-label>Slot</ion-label>
+		  <ion-select value="name slot" ok-text="Okay" cancel-text="Dismiss">
+		    <ion-select-option value="brown">Brown</ion-select-option>
+		    <ion-select-option value="blonde">Blonde</ion-select-option>
+		    <ion-select-option value="black">Black</ion-select-option>
+		    <ion-select-option value="red">Red</ion-select-option>
+		  </ion-select>
+		</ion-item>
+    	<ion-item>
+		  <ion-label floating>Time Start</ion-label>
+		  <ion-datetime displayFormat="DD-MM-YYYY HH:mm" [(ngModel)]="startT"></ion-datetime>
+		</ion-item>
+	  	<ion-item>
+		  <ion-label floating>Time End</ion-label>
+		  <ion-datetime displayFormat="DD-MM-YYYY HH:mm" [(ngModel)]="endT"></ion-datetime>
+		</ion-item>
+
+	  	<ion-button shape="round" color="primary" expand="block" (click)="submitSlot()">Submit</ion-button>
+	</form>
 
 </ion-content>

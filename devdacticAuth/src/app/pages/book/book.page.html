@@ -7,7 +7,7 @@
 </ion-header>
 
 <ion-content>
-  <div *ngFor="let slot of classSlots.rooms" class="category-block">
+  <div *ngFor="let slot of classSlots" class="category-block">
  
     <ion-row no-padding class="category-banner">
       <ion-col text-left button tappable align-self-center>
@@ -16,7 +16,7 @@
     </ion-row>
  
     <ion-slides [options]="sliderConfig">
-      <ion-slide *ngFor="let slot of classSlots.rooms">
+      <ion-slide *ngFor="let slot of classSlots">
        
           <ion-card>
             <ion-card-header>
