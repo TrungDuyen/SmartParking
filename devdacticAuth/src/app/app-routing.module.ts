@@ -11,7 +11,7 @@ const routes: Routes = [
     canActivate: [AuthGuardService]
   },
   { path: 'book', loadChildren: './pages/book/book.module#BookPageModule' },
-  { path: 'submit', loadChildren: './pages/submit/submit.module#SubmitPageModule' },
+  { path: 'submit/:name', loadChildren: './pages/submit/submit.module#SubmitPageModule' },
 ];
  
 @NgModule({

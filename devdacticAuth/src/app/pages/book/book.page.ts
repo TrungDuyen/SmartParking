@@ -21,6 +21,7 @@ export class BookPage implements OnInit {
     spaceBetween: 10,
     centeredSlides: true
   };
+  name: string;
  
   constructor(public api: RestApiService, public loadingController: LoadingController, private router : Router, public navCtrl: NavController) {
 
@@ -42,6 +43,9 @@ export class BookPage implements OnInit {
       console.log(err);
       
     });
+  }
+  pushPage(){
+    this.navCtrl.navigateForward(`/submit/${this.classSlots.name}`);
   }
 
   submit(){

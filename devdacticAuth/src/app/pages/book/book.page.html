@@ -25,7 +25,8 @@
               </ion-card-title>
               <ion-card-content>
                 <img src="{{ slot.photo }}">
-                <ion-button expand="full" (click)="submit()">Book</ion-button>
+                <!-- <ion-button expand="full" (click)="submit()">Book</ion-button> -->
+                <ion-button expand="full" [routerLink] = "['/submit', slot.name]" routerDirection="foward">Book</ion-button>
               </ion-card-content>
             </ion-card-header>
           </ion-card>
