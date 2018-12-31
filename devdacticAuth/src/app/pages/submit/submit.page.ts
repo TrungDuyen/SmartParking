@@ -14,34 +14,36 @@ export class SubmitPage implements OnInit {
 
  	startT;
  	endT;
- 	classSlots: any;
- 	rooms;
+ 	slotName;
+ 	slotForm: FormGroup;
  	passName = null;
 
- 	constructor( public api: RestApiService, private activatedRoute : ActivatedRoute){
+ 	constructor( public api: RestApiService, private activatedRoute : ActivatedRoute, private formBuilder: FormBuilder){
 		this.startT = new Date().toISOString();
 		this.endT  = new Date().toISOString();
+		this.slotForm = this.formBuilder.group({
+			'carNumber': [null, Validators.required],
+			'slotName': this.activatedRoute.snapshot.paramMap.get('name'),
+			'startT' : this.startT,
+			'endT': this.endT
+		})
   	}
 
   ngOnInit() {
-  	 this.getClassSlots();
   	 this.passName = this.activatedRoute.snapshot.paramMap.get('name');
   }
-  async getClassSlots() {
-  
-  await this.api.getClassSlots()
-    .subscribe(res => {
-      this.classSlots = res;
-     
-    }, err => {
+
+  // submitSlot(){
+  // 	console.log(this.slotForm);
+
+  // }
+  async submitSlot(){
+  await this.api.postClassSlots(this.slotForm.value)
+  .subscribe(res => {
+      let id = res['id'];
+      // this.router.navigate(['/detail/'+id]);
+    }, (err) => {
       console.log(err);
-      
     });
-  }
-
-
-  SubmitSlot(){
-
-  }
-
+}
 }

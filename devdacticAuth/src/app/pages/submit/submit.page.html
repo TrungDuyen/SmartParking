@@ -5,25 +5,25 @@
 </ion-header>
 
 <ion-content padding>
-	<form >
+	<form [formGroup]=slotForm >
 		<ion-item>
 	      <ion-label position="floating">Car Number</ion-label>
-	      <ion-input type="text" ></ion-input>
+	      <ion-input type="text" formControlName="carNumber"></ion-input>
     	</ion-item>
     	<ion-item>
 		  <ion-label>Slot Name</ion-label>
-		  <ion-label>{{passName}}</ion-label>
+		  <ion-label formControlName="slotName">{{passName}}</ion-label>
 		</ion-item>
     	<ion-item>
 		  <ion-label floating>Time Start</ion-label>
-		  <ion-datetime displayFormat="DD-MM-YYYY HH:mm" [(ngModel)]="startT"></ion-datetime>
+		  <ion-datetime displayFormat="DD-MM-YYYY HH:mm" formControlName="startT" [(ngModel)]="startT"></ion-datetime>
 		</ion-item>
 	  	<ion-item>
 		  <ion-label floating>Time End</ion-label>
-		  <ion-datetime displayFormat="DD-MM-YYYY HH:mm" [(ngModel)]="endT"></ion-datetime>
+		  <ion-datetime displayFormat="DD-MM-YYYY HH:mm" formControlName="endT" [(ngModel)]="endT"></ion-datetime>
 		</ion-item>
 
-	  	<ion-button shape="round" color="primary" expand="block" (click)="submitSlot()">Submit</ion-button>
+	  	<ion-button shape="round" color="primary" expand="block" [disabled]="!slotForm.valid" (click)="submitSlot()">Submit</ion-button>
 	</form>
 
 </ion-content>

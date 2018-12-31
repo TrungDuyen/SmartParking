@@ -37,7 +37,11 @@ export class RestApiService {
 	    map(this.extractData),
 	    catchError(this.handleError));
 	}
-	submitClassSlot(){
-		
-	}
+	postClassSlots(data): Observable<any> {
+	  const url = `${this.url}/api/submit`;
+	  return this.http.post(url, data)
+	    .pipe(
+	      catchError(this.handleError)
+	    );
+}
 }
