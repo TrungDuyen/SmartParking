@@ -2,11 +2,11 @@ const mongoose = require('mongoose'),
       Schema = mongoose.Schema;
 
 const slotSchema = new Schema({
- 
+  username: String,
   carNumber: String,
   slotName: String,
-  startT: String,
-  endT: String,
+  startT: { type: Date },
+  endT: { type: Date },
 });
 
 slotSchema.index({room: 1, startTime: 1});
